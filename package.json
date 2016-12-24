@@ -1,0 +1,29 @@
+{
+  "name": "generator-bitmate-gulp",
+  "version": "1.0.0",
+  "description": "BitMate Generator for creating Gulp tasks",
+  "main": "index.js",
+  "scripts": {
+    "test": "gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oligibson/generator-bitmate-gulp.git"
+  },
+  "author": "BitMate",
+  "license": "UNLICENSED",
+  "private": true,
+  "devDependencies": {
+    "ava": "^0.17.0",
+    "chai": "^3.5.0",
+    "chai-spies": "^0.7.1",
+    "cross-spawn": "^5.0.1",
+    "gulp": "gulpjs/gulp#4.0",
+    "gulp-nsp": "^2.4.2",
+    "nyc": "^10.0.0"
+  },
+  "dependencies": {
+    "bitmate-generator": "file:../bitmate-generator",
+    "lodash": "^4.17.3"
+  }
+}
