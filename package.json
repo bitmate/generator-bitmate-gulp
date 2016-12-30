@@ -3,27 +3,51 @@
   "version": "1.0.0",
   "description": "BitMate Generator for creating Gulp tasks",
   "main": "index.js",
-  "scripts": {
-    "test": "gulp test"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/oligibson/generator-bitmate-gulp.git"
-  },
+  "repository": "oligibson/generator-bitmate-gulp",
   "author": "BitMate",
   "license": "UNLICENSED",
   "private": true,
-  "devDependencies": {
-    "ava": "^0.17.0",
-    "chai": "^3.5.0",
-    "chai-spies": "^0.7.1",
-    "cross-spawn": "^5.0.1",
-    "gulp": "gulpjs/gulp#4.0",
-    "gulp-nsp": "^2.4.2",
-    "nyc": "^10.0.0"
-  },
   "dependencies": {
     "bitmate-generator": "file:../bitmate-generator",
+    "generator-bitmate-browsersync": "file:../generator-bitmate-browsersync",
+    "generator-bitmate-karma": "file:../generator-bitmate-karma",
+    "generator-bitmate-bower": "file:../generator-bitmate-bower",
+    "generator-bitmate-eslint": "file:../generator-bitmate-eslint",
     "lodash": "^4.17.3"
+  },
+  "devDependencies": {
+    "ava": "^0.16.0",
+    "babel-eslint": "^6.0.2",
+    "chai": "^3.5.0",
+    "chai-spies": "^0.7.1",
+    "cross-spawn": "^4.0.0",
+    "eslint": "^3.2.2",
+    "eslint-config-xo-space": "^0.12.0",
+    "eslint-plugin-babel": "^3.2.0",
+    "gulp": "gulpjs/gulp#4.0",
+    "gulp-eslint": "^2.0.0",
+    "gulp-exclude-gitignore": "^1.0.0",
+    "gulp-nsp": "^2.4.0",
+    "nyc": "^6.6.1"
+  },
+  "ava": {
+    "files": [
+      "test/**/*.js"
+    ]
+  },
+  "nyc": {
+    "include": [
+      "generators/**/*.js"
+    ],
+    "exclude": [
+      "generators/**/templates/**"
+    ]
+  },
+  "eslintConfig": {
+    "extends": "xo-space/esnext"
+  },
+  "scripts": {
+    "test": "gulp test",
+    "prepublish": "gulp prepublish"
   }
 }
