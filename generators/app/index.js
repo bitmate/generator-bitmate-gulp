@@ -15,19 +15,23 @@ module.exports = bitmate.Base.extend({
           'gulp-util': '^3.0.7'
         },
         scripts: {
-          serve: 'gulp serve',
-          test: 'gulp test'
+          'build': 'gulp',
+          'serve': 'gulp serve',
+          'serve:dist': 'gulp serve:dist',
+          'test': 'gulp test',
+          'test:auto': 'gulp test:auto'
         }
       };
 
       if (this.options.modules !== 'webpack') {
         Object.assign(pkg.devDependencies, {
-          'gulp-useref': '^3.0.3',
+          'gulp-useref': '^3.1.2',
+          'lazypipe': '^1.0.1',
           'gulp-postcss': '^6.0.1',
           'autoprefixer': '^6.2.3',
           'gulp-rev': '^6.0.1',
           'gulp-rev-replace': '^0.4.2',
-          'gulp-sourcemaps': '^1.6.0',
+          'gulp-sourcemaps': '^2.2.0',
           'gulp-uglify': '^1.4.2',
           'uglify-save-license': '^0.4.1',
           'gulp-cssnano': '^2.1.0',
@@ -137,6 +141,23 @@ module.exports = bitmate.Base.extend({
       this.copyTemplate(
         'gulp_tasks/styles.js',
         'gulp_tasks/styles.js',
+        this.options
+      );
+    }
+
+    const extensions = this.getExtensions(this.options);
+    const ignored = [this.options.css, extensions.js];
+
+    this.copyTemplate(
+      'gulp_tasks/misc.js',
+      'gulp_tasks/misc.js',
+      Object.assign({}, this.options, {ignored: ignored.join(',')})
+    );
+
+    if (this.options.client === 'angular1' && this.options.modules !== 'webpack') {
+      this.copyTemplate(
+        'gulp_tasks/partials.js',
+        'gulp_tasks/partials.js',
         this.options
       );
     }

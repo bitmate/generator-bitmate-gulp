@@ -12,8 +12,11 @@ const pkg = {
     'gulp-util': '^3.0.7'
   },
   scripts: {
-    serve: 'gulp serve',
-    test: 'gulp test'
+    'build': 'gulp',
+    'serve': 'gulp serve',
+    'serve:dist': 'gulp serve:dist',
+    'test': 'gulp test',
+    'test:auto': 'gulp test:auto'
   }
 };
 
@@ -29,12 +32,13 @@ test.beforeEach(() => {
 test('Configuring package.json with angular1/systemjs/css', t => {
   const expected = _.mergeWith({}, pkg, {
     devDependencies: {
-      'gulp-useref': '^3.0.3',
+      'gulp-useref': '^3.1.2',
+      'lazypipe': '^1.0.1',
       'gulp-postcss': '^6.0.1',
       'autoprefixer': '^6.2.3',
       'gulp-rev': '^6.0.1',
       'gulp-rev-replace': '^0.4.2',
-      'gulp-sourcemaps': '^1.6.0',
+      'gulp-sourcemaps': '^2.2.0',
       'gulp-uglify': '^1.4.2',
       'uglify-save-license': '^0.4.1',
       'gulp-cssnano': '^2.1.0',
@@ -74,12 +78,13 @@ test('Configuring package.json with angular2/webpack/scss', t => {
 test('Configuring package.json with angular2/systemjs/scss', t => {
   const expected = _.mergeWith({}, pkg, {
     devDependencies: {
-      'gulp-useref': '^3.0.3',
+      'gulp-useref': '^3.1.2',
+      'lazypipe': '^1.0.1',
       'gulp-postcss': '^6.0.1',
       'autoprefixer': '^6.2.3',
       'gulp-rev': '^6.0.1',
       'gulp-rev-replace': '^0.4.2',
-      'gulp-sourcemaps': '^1.6.0',
+      'gulp-sourcemaps': '^2.2.0',
       'gulp-uglify': '^1.4.2',
       'uglify-save-license': '^0.4.1',
       'gulp-cssnano': '^2.1.0',

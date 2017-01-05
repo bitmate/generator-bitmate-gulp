@@ -13,10 +13,13 @@ gulp.registry(hub);
 <% if (modules === 'bower') { -%>
 gulp.task('inject', gulp.series(gulp.parallel('styles', 'scripts'), 'inject'));
 <% } -%>
-gulp.task('serve', <%- serveTask %>);
+gulp.task('build', <%- buildTask %>);
 gulp.task('test', <%- testTask %>);
+gulp.task('test:auto', <%- testAutoTask %>);
+gulp.task('serve', <%- serveTask %>);
+gulp.task('serve:dist', gulp.series('default', 'browsersync:dist'));
+gulp.task('default', gulp.series('clean', 'build'));
 gulp.task('watch', watch);
-
 function reloadBrowserSync(cb) {
   browserSync.reload();
   cb();

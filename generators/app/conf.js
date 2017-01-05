@@ -30,17 +30,32 @@ function gulpTasksToString(tasks) {
 module.exports = function gulpfileConf(generatorOptions) {
   const options = Object.assign({}, generatorOptions);
 
-  if (options.modules === 'bower') {
+  if (options.modules === 'webpack') {
+    options.buildTask = series(parallel('other', 'webpack:dist'));
+  } else if (options.modules === 'bower') {
     options.buildTask = series(parallel('inject', 'other'), 'build');
+  } else {
+    options.buildTask = series(parallel('systemjs', 'systemjs:html', 'styles', 'other'), 'build');
+  }
+
+  if (options.client === 'angular1' && options.modules !== 'webpack') {
+    options.buildTask.unshift('partials');
   }
 
   if (options.modules === 'bower') {
     options.serveTask = series('inject', 'watch', 'browsersync');
+  } else if (options.modules === 'webpack') {
+    options.serveTask = series('webpack:watch', 'watch', 'browsersync');
+  } else {
+    options.serveTask = series(parallel('scripts', 'styles'), 'watch', 'browsersync');
   }
 
   if (options.modules === 'bower') {
     options.testTask = series('scripts', 'karma:single-run');
     options.testAutoTask = series('watch', 'karma:auto-run');
+  } else {
+    options.testTask = series('karma:single-run');
+    options.testAutoTask = series('karma:auto-run');
   }
 
   ['buildTask', 'serveTask', 'testTask', 'testAutoTask'].forEach(task => {
@@ -49,3 +64,4 @@ module.exports = function gulpfileConf(generatorOptions) {
 
   return options;
 };
+
