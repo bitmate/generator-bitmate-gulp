@@ -12,6 +12,7 @@
     "generator-bitmate-browsersync": "file:../generator-bitmate-browsersync",
     "generator-bitmate-karma": "file:../generator-bitmate-karma",
     "generator-bitmate-bower": "file:../generator-bitmate-bower",
+    "generator-bitmate-webpack":"file:../generator-bitmate-webpack",
     "generator-bitmate-eslint": "file:../generator-bitmate-eslint",
     "lodash": "^4.17.3"
   },

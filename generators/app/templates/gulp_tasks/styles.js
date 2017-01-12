@@ -21,7 +21,7 @@ function styles() {
 <% if (css == 'css') { -%>
   return gulp.src(conf.path.client('**/*.css'))
 <% } else { -%>
-  return gulp.src(conf.path.client('app/app.<%- css %>'))
+  return gulp.src(conf.path.client('index.<%- css %>'))
 <% } -%>
     .pipe(sourcemaps.init())
 <%   if (css == 'scss') { -%>
@@ -35,6 +35,6 @@ function styles() {
 <%   } -%>
     .pipe(postcss([autoprefixer()])).on('error', conf.errorHandler('Autoprefixer'))
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest(conf.path.tmp('app')))
+    .pipe(gulp.dest(conf.path.tmp()))
     .pipe(browserSync.stream());
 }
