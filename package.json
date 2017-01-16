@@ -6,14 +6,13 @@
   "repository": "oligibson/generator-bitmate-gulp",
   "author": "BitMate",
   "license": "UNLICENSED",
-  "private": true,
   "dependencies": {
-    "bitmate-generator": "file:../bitmate-generator",
-    "generator-bitmate-browsersync": "file:../generator-bitmate-browsersync",
-    "generator-bitmate-karma": "file:../generator-bitmate-karma",
-    "generator-bitmate-bower": "file:../generator-bitmate-bower",
-    "generator-bitmate-webpack":"file:../generator-bitmate-webpack",
-    "generator-bitmate-eslint": "file:../generator-bitmate-eslint",
+    "bitmate-generator": "^1.0.0",
+    "generator-bitmate-browsersync": "^1.0.0",
+    "generator-bitmate-karma": "^1.0.0",
+    "generator-bitmate-bower": "^1.0.0",
+    "generator-bitmate-webpack":"^1.0.0",
+    "generator-bitmate-eslint": "^1.0.0",
     "lodash": "^4.17.3"
   },
   "devDependencies": {
@@ -50,5 +49,8 @@
   "scripts": {
     "test": "gulp test",
     "prepublish": "gulp prepublish"
+  },
+  "publishConfig": {
+    "registry": "http://sinopia.bitmate.io/"
   }
 }
