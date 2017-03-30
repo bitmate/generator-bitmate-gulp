@@ -93,7 +93,7 @@ module.exports = bitmate.Base.extend({
           }
         });
 
-        if (this.options.modules === 'webpack' && this.options.framework !== 'angular1' && this.options.framework !== 'angular2') {
+        if (this.options.modules === 'webpack' && this.options.client !== 'angular1' && this.options.client !== 'angular2') {
           this.mergeJson('.babelrc', {
             env: {
               production: {
