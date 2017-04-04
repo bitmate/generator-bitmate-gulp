@@ -1,6 +1,6 @@
 'use strict';
 
-const bitmate = require('bitmate-generator');
+const bitmate = require('@oligibson/bitmate-generator');
 const conf = require('./conf');
 
 module.exports = bitmate.Base.extend({
@@ -111,16 +111,16 @@ module.exports = bitmate.Base.extend({
 
   composing() {
     this.composeWith('bitmate-browsersync', {options: this.options}, {
-      local: require.resolve('generator-bitmate-browsersync/generators/app')
+      local: require.resolve('@oligibson/generator-bitmate-browsersync/generators/app')
     });
     this.composeWith('bitmate-karma', {options: this.options}, {
-      local: require.resolve('generator-bitmate-karma/generators/app')
+      local: require.resolve('@oligibson/generator-bitmate-karma/generators/app')
     });
     this.composeWith(`bitmate-${this.options.modules}`, {options: this.options}, {
-      local: require.resolve(`generator-bitmate-${this.options.modules}/generators/app`)
+      local: require.resolve(`@oligibson/generator-bitmate-${this.options.modules}/generators/app`)
     });
     this.composeWith('bitmate-eslint', {options: this.options}, {
-      local: require.resolve('generator-bitmate-eslint/generators/app')
+      local: require.resolve('@oligibson/generator-bitmate-eslint/generators/app')
     });
   },
 

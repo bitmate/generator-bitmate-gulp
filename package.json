@@ -1,18 +1,19 @@
 {
-  "name": "generator-bitmate-gulp",
+  "name": "@oligibson/generator-bitmate-gulp",
   "version": "1.0.2",
   "description": "BitMate Generator for creating Gulp tasks",
+  "homepage": "https://bitmate.io/",
   "main": "index.js",
   "repository": "oligibson/generator-bitmate-gulp",
   "author": "BitMate",
   "license": "UNLICENSED",
   "dependencies": {
-    "bitmate-generator": "^1.0.2",
-    "generator-bitmate-browsersync": "^1.0.2",
-    "generator-bitmate-karma": "^1.0.2",
-    "generator-bitmate-bower": "^1.0.2",
-    "generator-bitmate-webpack":"^1.0.2",
-    "generator-bitmate-eslint": "^1.0.2",
+    "@oligibson/bitmate-generator": "^1.0.0",
+    "@oligibson/generator-bitmate-browsersync": "^1.0.0",
+    "@oligibson/generator-bitmate-karma": "^1.0.0",
+    "@oligibson/generator-bitmate-bower": "^1.0.0",
+    "@oligibson/generator-bitmate-webpack":"^1.0.0",
+    "@oligibson/generator-bitmate-eslint": "^1.0.0",
     "lodash": "^4.17.3"
   },
   "devDependencies": {
@@ -49,8 +50,5 @@
   "scripts": {
     "test": "gulp test",
     "prepublish": "gulp prepublish"
-  },
-  "publishConfig": {
-    "registry": "http://sinopia.bitmate.io/"
   }
 }
