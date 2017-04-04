@@ -1,6 +1,6 @@
 {
   "name": "@oligibson/generator-bitmate-gulp",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "BitMate Generator for creating Gulp tasks",
   "homepage": "https://bitmate.io/",
   "main": "index.js",
@@ -8,12 +8,12 @@
   "author": "BitMate",
   "license": "UNLICENSED",
   "dependencies": {
-    "@oligibson/bitmate-generator": "^1.0.0",
-    "@oligibson/generator-bitmate-browsersync": "^1.0.0",
-    "@oligibson/generator-bitmate-karma": "^1.0.0",
-    "@oligibson/generator-bitmate-bower": "^1.0.0",
-    "@oligibson/generator-bitmate-webpack":"^1.0.0",
-    "@oligibson/generator-bitmate-eslint": "^1.0.0",
+    "@oligibson/bitmate-generator": "^1.0.4",
+    "@oligibson/generator-bitmate-browsersync": "^1.0.4",
+    "@oligibson/generator-bitmate-karma": "^1.0.4",
+    "@oligibson/generator-bitmate-bower": "^1.0.4",
+    "@oligibson/generator-bitmate-webpack":"^1.0.4",
+    "@oligibson/generator-bitmate-eslint": "^1.0.4",
     "lodash": "^4.17.3"
   },
   "devDependencies": {
