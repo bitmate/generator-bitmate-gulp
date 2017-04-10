@@ -17,7 +17,7 @@ test(`Configure .babelrc when js is 'babel' and modules is 'webpack'`, t => {
     presets: ['es2015'],
     env: {
       production: {presets: [['es2015', {modules: false}]]},
-      test: {plugins: []}
+      test: {plugins: ['istanbul']}
     }
   };
   Utils.call(context, 'configuring.babel', {js: 'babel', modules: 'webpack'});
@@ -28,7 +28,7 @@ test(`Configure .babelrc when js is 'babel' and modules is 'systemjs'`, t => {
   const expected = {
     presets: ['es2015'],
     env: {
-      test: {plugins: []}
+      test: {plugins: ['istanbul']}
     }
   };
   Utils.call(context, 'configuring.babel', {js: 'babel', modules: 'systemjs'});

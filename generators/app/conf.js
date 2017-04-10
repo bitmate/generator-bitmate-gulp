@@ -27,7 +27,7 @@ function gulpTasksToString(tasks) {
   return result;
 }
 
-module.exports = function gulpfileConf(generatorOptions) {
+module.exports = function (generatorOptions) {
   const options = Object.assign({}, generatorOptions);
 
   if (options.modules === 'webpack') {
