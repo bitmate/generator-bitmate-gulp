@@ -31,9 +31,9 @@ module.exports = function (generatorOptions) {
   const options = Object.assign({}, generatorOptions);
 
   if (options.modules === 'webpack') {
-    options.buildTask = series(parallel('other', 'webpack:dist'));
+    options.buildTask = options.server === 'none' ? series(parallel('other', 'webpack:dist')) : series(parallel('other', 'webpack:dist', 'copy'));
   } else if (options.modules === 'bower') {
-    options.buildTask = series(parallel('inject', 'other'), 'build');
+    options.buildTask = options.server === 'none' ? series(parallel('inject', 'other'), 'build') : series(parallel('inject', 'other', 'copy'), 'build');
   } else {
     options.buildTask = series(parallel('systemjs', 'systemjs:html', 'styles', 'other'), 'build');
   }
@@ -43,19 +43,19 @@ module.exports = function (generatorOptions) {
   }
 
   if (options.modules === 'bower') {
-    options.serveTask = series('inject', 'watch', 'browsersync');
+    options.serveTask = options.server === 'none' ? series('inject', 'watch', 'browsersync') : series('inject', 'watch', 'browsersync', 'nodemon');
   } else if (options.modules === 'webpack') {
-    options.serveTask = series('webpack:watch', 'watch', 'browsersync');
+    options.serveTask = options.server === 'none' ? series('webpack:watch', 'watch', 'browsersync') : series('webpack:watch', 'watch', 'browsersync', 'nodemon');
   } else {
     options.serveTask = series(parallel('scripts', 'styles'), 'watch', 'browsersync');
   }
 
   if (options.modules === 'bower') {
-    options.testTask = series('scripts', 'karma:single-run');
-    options.testAutoTask = series('watch', 'karma:auto-run');
+    options.testTask = options.server === 'none' ? series('scripts', 'karma:single-run') : series('scripts', 'karma:single-run', 'mocha:single-run');
+    options.testAutoTask = options.server === 'none' ? series('watch', 'karma:auto-run') : series('watch', 'karma:auto-run', 'mocha:auto-run');
   } else {
-    options.testTask = series('karma:single-run');
-    options.testAutoTask = series('karma:auto-run');
+    options.testTask = options.server === 'none' ? series('karma:single-run') : series('karma:single-run', 'mocha:single-run');
+    options.testAutoTask = options.server === 'none' ? series('karma:auto-run') : parallel('karma:auto-run', 'mocha:auto-run');
   }
 
   ['buildTask', 'serveTask', 'testTask', 'testAutoTask'].forEach(task => {

@@ -51,7 +51,21 @@ test('Configuring package.json with angular1/systemjs/css', t => {
       'gulp-angular-templatecache': '2.0.0'
     }
   });
-  Utils.call(context, 'configuring.pkg', {client: 'angular1', modules: 'systemjs', css: 'css'});
+  Utils.call(context, 'configuring.pkg', {server: 'none', client: 'angular1', modules: 'systemjs', css: 'css'});
+  t.deepEqual(context.mergeJson['package.json'], expected);
+});
+
+test('Configuring package.json with express/angular1/webpack/css', t => {
+  const expected = _.mergeWith({}, pkg, {
+    devDependencies: {
+      'gulp-angular-filesort': '1.1.1',
+      'gulp-htmlmin': '3.0.0',
+      'gulp-insert': '0.5.0',
+      'gulp-ng-annotate': '2.0.0',
+      'gulp-nodemon': '^2.2.1'
+    }
+  });
+  Utils.call(context, 'configuring.pkg', {server: 'express', client: 'angular1', modules: 'webpack', css: 'css'});
   t.deepEqual(context.mergeJson['package.json'], expected);
 });
 
@@ -64,7 +78,7 @@ test('Configuring package.json with angular1/webpack/css', t => {
       'gulp-ng-annotate': '2.0.0'
     }
   });
-  Utils.call(context, 'configuring.pkg', {client: 'angular1', modules: 'webpack', css: 'css'});
+  Utils.call(context, 'configuring.pkg', {server: 'none', client: 'angular1', modules: 'webpack', css: 'css'});
   t.deepEqual(context.mergeJson['package.json'], expected);
 });
 
@@ -72,7 +86,7 @@ test('Configuring package.json with angular2/webpack/scss', t => {
   const expected = _.mergeWith({}, pkg, {
     devDependencies: {'gulp-sass': '3.1.0'}
   });
-  Utils.call(context, 'configuring.pkg', {client: 'angular2', modules: 'webpack', css: 'scss'});
+  Utils.call(context, 'configuring.pkg', {server: 'none', client: 'angular2', modules: 'webpack', css: 'scss'});
   t.deepEqual(context.mergeJson['package.json'], expected);
 });
 
@@ -93,7 +107,7 @@ test('Configuring package.json with angular2/systemjs/scss', t => {
       'gulp-sass': '3.1.0'
     }
   });
-  Utils.call(context, 'configuring.pkg', {client: 'angular2', modules: 'systemjs', css: 'scss'});
+  Utils.call(context, 'configuring.pkg', {server: 'none', client: 'angular2', modules: 'systemjs', css: 'scss'});
   t.deepEqual(context.mergeJson['package.json'], expected);
 });
 
@@ -101,7 +115,7 @@ test('Configuring package.json with angular2/webpack/less', t => {
   const expected = _.mergeWith({}, pkg, {
     devDependencies: {'gulp-less': '3.3.0'}
   });
-  Utils.call(context, 'configuring.pkg', {client: 'angular2', modules: 'webpack', css: 'less'});
+  Utils.call(context, 'configuring.pkg', {server: 'none', client: 'angular2', modules: 'webpack', css: 'less'});
   t.deepEqual(context.mergeJson['package.json'], expected);
 });
 
@@ -109,6 +123,6 @@ test('Configuring package.json with angular2/webpack/styl', t => {
   const expected = _.mergeWith({}, pkg, {
     devDependencies: {'gulp-stylus': '2.6.0'}
   });
-  Utils.call(context, 'configuring.pkg', {client: 'angular2', modules: 'webpack', css: 'styl'});
+  Utils.call(context, 'configuring.pkg', {server: 'none', client: 'angular2', modules: 'webpack', css: 'styl'});
   t.deepEqual(context.mergeJson['package.json'], expected);
 });

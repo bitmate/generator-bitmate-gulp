@@ -23,6 +23,12 @@ module.exports = bitmate.Base.extend({
         }
       };
 
+      if (this.options.server === 'express') {
+        Object.assign(pkg.devDependencies, {
+          'gulp-nodemon': '^2.2.1'
+        });
+      }
+
       if (this.options.modules !== 'webpack') {
         Object.assign(pkg.devDependencies, {
           'gulp-useref': '3.1.2',
@@ -122,6 +128,12 @@ module.exports = bitmate.Base.extend({
     this.composeWith('bitmate-eslint', {options: this.options}, {
       local: require.resolve('@oligibson/generator-bitmate-eslint/generators/app')
     });
+
+    if (this.options.server !== 'none') {
+      this.composeWith('bitmate-mocha', {options: this.options}, {
+        local: require.resolve('@oligibson/generator-bitmate-mocha/generators/app')
+      });
+    }
   },
 
   writing() {
@@ -162,6 +174,14 @@ module.exports = bitmate.Base.extend({
       this.copyTemplate(
         'gulp_tasks/partials.js',
         'gulp_tasks/partials.js',
+        this.options
+      );
+    }
+
+    if (this.options.server === 'express') {
+      this.copyTemplate(
+        'gulp_tasks/nodemon.js',
+        'gulp_tasks/nodemon.js',
         this.options
       );
     }

@@ -14,6 +14,7 @@
     "@oligibson/generator-bitmate-bower": "^1.0.5",
     "@oligibson/generator-bitmate-webpack":"^1.0.5",
     "@oligibson/generator-bitmate-eslint": "^1.0.5",
+    "@oligibson/generator-bitmate-mocha": "^1.0.5",
     "lodash": "^4.17.3"
   },
   "devDependencies": {

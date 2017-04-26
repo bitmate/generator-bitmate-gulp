@@ -15,6 +15,12 @@ test.before(() => {
 
 test('Call this.composeWith 4 times', () => {
   const spy = chai.spy.on(context, 'composeWith');
-  Utils.call(context, 'composing', {modules: 'bower'});
+  Utils.call(context, 'composing', {server: 'none', modules: 'bower'});
   expect(spy).to.have.been.called.exactly(4);
+});
+
+test('Call this.composeWith 5 times', () => {
+  const spy = chai.spy.on(context, 'composeWith');
+  Utils.call(context, 'composing', {server: 'express', modules: 'bower'});
+  expect(spy).to.have.been.called.exactly(5);
 });

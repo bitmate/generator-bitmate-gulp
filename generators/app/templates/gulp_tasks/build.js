@@ -55,5 +55,9 @@ function build() {
     .pipe(htmlFilter)
     .pipe(htmlmin())
     .pipe(htmlFilter.restore)
+<% if (server === 'none') { -%>
     .pipe(gulp.dest(conf.path.dist()));
+<% } else { -%>
+    .pipe(gulp.dest(conf.path.dist('client')));
+<% } -%>
 }

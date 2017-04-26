@@ -17,7 +17,11 @@ gulp.task('build', <%- buildTask %>);
 gulp.task('test', <%- testTask %>);
 gulp.task('test:auto', <%- testAutoTask %>);
 gulp.task('serve', <%- serveTask %>);
+<% if (server === 'express') { -%>
+gulp.task('serve:dist', gulp.series('default', 'browsersync:dist', 'nodemon:dist'));
+<% } else { -%>
 gulp.task('serve:dist', gulp.series('default', 'browsersync:dist'));
+<% } -%>
 gulp.task('default', gulp.series('clean', 'build'));
 gulp.task('watch', watch);
 function reloadBrowserSync(cb) {
